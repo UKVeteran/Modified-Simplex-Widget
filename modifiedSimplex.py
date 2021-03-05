@@ -21,7 +21,6 @@ class Ui_MainWindow(object):
             self.txR13.clear()
             self.txR14.clear()
             self.cbS1.setCurrentIndex(0)
-            self.txB1.clear()
             self.txResult.clear()
             self.tabWidget.setCurrentIndex(0)
             self.statusbar.clearMessage()
@@ -86,10 +85,6 @@ class Ui_MainWindow(object):
         self.cbS1.addItem("")
         self.cbS1.addItem("")
         self.cbS1.addItem("")
-        self.txB1 = QtWidgets.QLineEdit(self.tabModel)
-        self.txB1.setGeometry(QtCore.QRect(560, 100, 91, 20))
-        self.txB1.setAutoFillBackground(False)
-        self.txB1.setObjectName("txB1")
 
         self.label_20 = QtWidgets.QLabel(self.tabModel)
         self.label_20.setGeometry(QtCore.QRect(10, 190, 641, 21))
