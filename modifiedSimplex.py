@@ -2,17 +2,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from scipy.optimize import linprog
 from numpy import multiply
 
-
 class Ui_MainWindow(object):
-
-
     def new(self):
         self.msg.setWindowTitle("New")
         self.msg.setText("New Calculation?")
         op = self.msg.exec_()
         if op == QtWidgets.QMessageBox.Ok:
             self.cbObjetivo.setCurrentIndex(0)  
-            self.cbS1.setCurrentIndex(0)
             self.txResult.clear()
             self.tabWidget.setCurrentIndex(0)
             self.statusbar.clearMessage()
@@ -29,24 +25,14 @@ class Ui_MainWindow(object):
         self.tabWidget.setObjectName("tabWidget")
         self.tabModel = QtWidgets.QWidget()
         self.tabModel.setObjectName("tabModel")
+
         self.cbObjetivo = QtWidgets.QComboBox(self.tabModel)
-        self.cbObjetivo.setGeometry(QtCore.QRect(400, 10, 90, 40))
-        self.cbObjetivo.setAutoFillBackground(False)
-        self.cbObjetivo.setObjectName("cbObjetivo")
-        self.cbObjetivo.addItem("")
-        self.cbObjetivo.addItem("")
-        self.cbObjetivo.addItem("")
-
-        self.cbS1 = QtWidgets.QComboBox(self.tabModel)
-        self.cbS1.setGeometry(QtCore.QRect(520, 100, 31, 21))
-        self.cbS1.setAutoFillBackground(False)
-        self.cbS1.setObjectName("cbS1")
-        self.cbS1.addItem("")
-        self.cbS1.addItem("")
-        self.cbS1.addItem("")
-
         self.label_20 = QtWidgets.QLabel(self.tabModel)
         self.label_20.setGeometry(QtCore.QRect(10, 190, 641, 21))
+
+        
+        
+        
         self.label_20.setAutoFillBackground(False)
         self.label_20.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.label_20.setAlignment(QtCore.Qt.AlignCenter)
@@ -171,6 +157,33 @@ class Ui_MainWindow(object):
         self.msg.setIcon(QtWidgets.QMessageBox.Question)
         self.msg.setStandardButtons(QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
 
+
+
+ 
+        self.tabResult = QtWidgets.QWidget()
+        self.tabResult.setObjectName("tabResult")
+        self.txResult = QtWidgets.QTextEdit(self.tabResult)
+        self.txResult.setGeometry(QtCore.QRect(0, 0, 661, 251))
+        self.txResult.setObjectName("txResult")
+        self.txResult.setReadOnly(True)
+        self.txResult.setFontPointSize(16)
+        self.tabWidget.addTab(self.tabResult, "")
+
+
+
+        self.tabResult1 = QtWidgets.QWidget()
+        self.tabResult1.setObjectName("tabResult1")
+        self.txResult1 = QtWidgets.QTextEdit(self.tabResult1)
+        self.txResult1.setGeometry(QtCore.QRect(0, 0, 661, 251))
+        self.txResult1.setObjectName("txResult1")
+        self.txResult1.setReadOnly(True)
+        self.txResult1.setFontPointSize(16)
+        self.tabWidget.addTab(self.tabResult1, "")
+        
+        
+
+
+
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
         self.action.triggered.connect(lambda : MainWindow.close())
@@ -180,13 +193,10 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Simplex Solvers"))
-        self.cbS1.setItemText(0, _translate("MainWindow", "≤"))
-        self.cbS1.setItemText(1, _translate("MainWindow", "≥"))
-        self.cbS1.setItemText(2, _translate("MainWindow", "="))
-        self.cbObjetivo.setItemText(0, _translate("MainWindow", "2var2const"))
-        self.cbObjetivo.setItemText(1, _translate("MainWindow", "3var3const"))
-        self.cbObjetivo.setItemText(2, _translate("MainWindow", "4var1const"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabModel), _translate("MainWindow", "Solvers"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabModel), _translate("MainWindow", "2var2const"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabResult), _translate("MainWindow", "Result"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabResult1), _translate("MainWindow", "Result"))        
+
         self.menuMain.setTitle(_translate("MainWindow", "Main"))
         self.actionNew.setText(_translate("MainWindow", "New"))
         self.actionNew.setShortcut(_translate("MainWindow", "Ctrl+N"))
