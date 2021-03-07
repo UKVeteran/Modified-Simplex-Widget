@@ -8,10 +8,21 @@ class Ui_MainWindow(object):
         self.msg.setText("New Calculation?")
         op = self.msg.exec_()
         if op == QtWidgets.QMessageBox.Ok:
-            self.cbObjetivo.setCurrentIndex(0)  
+            self.cbObjetivo.setCurrentIndex(0)
+            self.txF1.clear()
+            self.txF2.clear()
+            self.txF3.clear()
+            self.txF4.clear()
+            self.txR11.clear()
+            self.txR12.clear()
+            self.txR13.clear()
+            self.txR14.clear()
+            self.cbS1.setCurrentIndex(0)
+            self.txB1.clear()
             self.txResult.clear()
             self.tabWidget.setCurrentIndex(0)
             self.statusbar.clearMessage()
+
             
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -23,20 +34,12 @@ class Ui_MainWindow(object):
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
         self.tabWidget.setGeometry(QtCore.QRect(0, 0, 668, 281))
         self.tabWidget.setObjectName("tabWidget")
+
+#Model Tab (2var2const)
         self.tabModel = QtWidgets.QWidget()
         self.tabModel.setObjectName("tabModel")
 
-        self.cbObjetivo = QtWidgets.QComboBox(self.tabModel)
-        self.label_20 = QtWidgets.QLabel(self.tabModel)
-        self.label_20.setGeometry(QtCore.QRect(10, 190, 641, 21))
-
         
-        
-        
-        self.label_20.setAutoFillBackground(False)
-        self.label_20.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.label_20.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_20.setObjectName("label_20")
         self.label_3 = QtWidgets.QLabel(self.tabModel)
         self.label_3.setGeometry(QtCore.QRect(330, 40, 31, 21))
         self.label_3.setAutoFillBackground(False)
@@ -159,7 +162,7 @@ class Ui_MainWindow(object):
 
 
 
- 
+#Result Tab 1
         self.tabResult = QtWidgets.QWidget()
         self.tabResult.setObjectName("tabResult")
         self.txResult = QtWidgets.QTextEdit(self.tabResult)
@@ -170,7 +173,14 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tabResult, "")
 
 
+        
+#Model Tab (3var3const)
+        self.tab33 = QtWidgets.QWidget()
+        self.tab33.setObjectName("tab33")
+        self.tabWidget.addTab(self.tab33,"")
+        
 
+#Result Tab 2
         self.tabResult1 = QtWidgets.QWidget()
         self.tabResult1.setObjectName("tabResult1")
         self.txResult1 = QtWidgets.QTextEdit(self.tabResult1)
@@ -179,6 +189,25 @@ class Ui_MainWindow(object):
         self.txResult1.setReadOnly(True)
         self.txResult1.setFontPointSize(16)
         self.tabWidget.addTab(self.tabResult1, "")
+        
+        
+
+        
+#Model Tab (4var1const)
+        self.tab41 = QtWidgets.QWidget()
+        self.tab41.setObjectName("tab41")
+        self.tabWidget.addTab(self.tab41,"")
+        
+
+#Result Tab 3
+        self.tabResult2 = QtWidgets.QWidget()
+        self.tabResult2.setObjectName("tabResult2")
+        self.txResult2 = QtWidgets.QTextEdit(self.tabResult2)
+        self.txResult2.setGeometry(QtCore.QRect(0, 0, 661, 251))
+        self.txResult2.setObjectName("txResult2")
+        self.txResult2.setReadOnly(True)
+        self.txResult2.setFontPointSize(16)
+        self.tabWidget.addTab(self.tabResult2, "")
         
         
 
@@ -193,9 +222,19 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Simplex Solvers"))
+#Tab for 2var2cont
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabModel), _translate("MainWindow", "2var2const"))
+#Tab Result 1
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabResult), _translate("MainWindow", "Result"))
+#Tab Result 2
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabResult1), _translate("MainWindow", "Result"))        
+#Tab for 4var1const
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab41), _translate("MainWindow", "4var1const"))        
+#Tab Result 3
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabResult2), _translate("MainWindow", "Result"))        
+#Tab for 3var3const
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab33), _translate("MainWindow", "3var3const"))        
+
 
         self.menuMain.setTitle(_translate("MainWindow", "Main"))
         self.actionNew.setText(_translate("MainWindow", "New"))
